@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../SDS/index.css">
+    <title>SDS</title>
+    
+    <script type="text/javascript">
+        function PrintPanel() {
+            var panel = document.getElementById("content");
+            var printWindow = window.open('', '', 'height=400,width=800');
+            printWindow.document.write('<html><head><title></title>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.write(panel.innerHTML);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            setTimeout(function () {
+                printWindow.print();
+                printWindow.close();
+            }, 500);
+            return false;
+        }
+    </script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js">
+    </script>
+    
+</head>
+<body>
+    <div id="content">
+        <div id="pageFooter"></div>
+        <div id="makepdf">
+            <br><br>
+            <h1>____________________________________________________________________________________________</h1>
+            <br><br>
+            <h1 style="text-align:right";>Software Design</h1>
+            <h1 style="text-align:right";>Specification</h1>
+            <br>
+            <h2 style="text-align:right";>for</h2>
+            <br>
+            <h1 style="text-align:right";>Exam-cohort</h1>
+            <br>
+            <h2 style="text-align:right";>Version 1.0 approved</h2>
+            <br>
+            <h2 style="text-align:right";>Prepared by</h2>
+            <h1 style="text-align:right";>Prosonjit Roy</h1>
+            <h1 style="text-align:right";>Riaz Mehedi</h1>
+            <h1 style="text-align:right";>Rafiul Islam</h1>
+            <br>
+            <h1 style="text-align:right";>1/07/2022</h1>
+               
+        </div>
+    </div>
+    <div id="content">
+        <div id="pageFooter"></div>
+        <div id="makepdf">
+           
+        
+          <div class="table" >
+           <h2>Table of Contents</h2>
+          
+          
+          <div class="row">
+                 <div class="title">1. Introduction</div>
+                 <div class="dots"></div>
+                 <div class="value"><b>3</b></div>
+          </div>
+          <div class="row">
+                
+                <div class="title">2. Ducoment conventions</div>
+                <div class="dots"></div>
+                <div class="value">4</div>	
+          </div>
+          <div class="row">
+                
+                <div class="title">3. Description of Design Components</div>
+                <div class="dots"></div>
+                <div class="value">4</div>	
+          </div>	
+
+          <div class="row">
+                
+                <div class="title">4.High-Level Component Design</div>
+                <div class="dots"></div>
+                <div class="value">5</div>	
+          </div>
+
+          <div class="row">
+                
+                <div class="title">5. Class Diagram</div>
+                <div class="dots"></div>
+                <div class="value">6</div>	
+          </div>
+          <div class="row">
+                
+            <div class="title">6. ER Diagram</div>
+            <div class="dots"></div>
+            <div class="value">7</div>	
+          </div>
+          <div class="row">
+                
+            <div class="title">7. Implementation Plan</div>
+            <div class="dots"></div>
+            <div class="value">8</div>	
+          </div>
+          </div>
+      </div>
+    </div>	
+
+    <div id="content">
+        <div id="pageFooter"></div>
+        <div id="makepdf">
+           <h2>1.	Introduction</h2>
+           <p style="text-align:justify">We are required to develop a system to take online exams. 
+                   An online exam system is a computer-based test system that can be 
+                   used to conduct computer based tests online. This examination system uses fewer 
+                   resources and reduces the need for question papers and answer scripts, exam room
+                   scheduling, arranging invigilators, coordinating with examiners, and more. The 
+                   output of this process is a description of the computer-based test. Online exam 
+                   design is an early stage of the system design process.         
+                </p>
+        </div>
+    </div>
+
+    <div id="content">
+        <div id="pageFooter"></div>
+        <div id="makepdf">
+           <h2>2. Ducoment conventions</h2>
+           <p class="c2 c3"><span class="c7 c1"></span></p>
+           <table class="c15">
+               <tbody>
+                   <tr class="c22">
+                       <td class="c19" colspan="1" rowspan="1">
+                           <p class="c12"><span class="c7 c1">Class diagram</span></p>
+                       </td>
+                   </tr>
+                   <tr class="c22">
+                       <td class="c19" colspan="1" rowspan="1">
+                           <p class="c12"><span class="c7 c1">ER diagram</span></p>
+                       </td>
+                   </tr>
+               </tbody>
+           </table>
+           <p class="c2 c3"><span class="c7 c1"></span></p>
+        
+           <h2 class="c2">2.1 Description Class Diagram:</h2>
+           <p>In UML, class diagrams are one of six types of structural diagram. 
+             Class diagrams are fundamental to the object modeling process and model the static structure of a system.
+             Depending on the complexity of a system, you can use a single class diagram to model an entire system,
+             or you can use several class diagrams to model the components of a system.
+            </p><br>
+
+             <p>Class diagrams are the blueprints of your system or subsystem.
+                You can use class diagrams to model the objects that make up the system, to display the 
+                relationships between the objects, and to describe what those objects do and the services that 
+                they provide.
+            </p><br>
+
+            <p>Class diagrams are useful in many stages of system design. In the analysis stage, a class 
+                diagram can help you to understand the requirements of your problem domain and to 
+                 identify its components. In an object-oriented software project, the class diagrams 
+                 that you create during the early stages of the project contain classes that often
+                 translate into actual software classes and objects when you write code. Later, you can 
+                 refine your earlier analysis and conceptual models into class diagrams that show the
+                 specific parts of your system, user interfaces, logical implementations, and so on.
+                 Your class diagrams then become a snapshot that describes exactly how your system
+                 works, the relationships between system components at many levels, and how you plan
+                to implement those components.
+             </p><br>
+
+             <p>You can use class diagrams to visualize, specify, and document structural features in your models.
+                 For example, during the analysis and design phases of the development cycle,
+                 you can create class diagrams to perform the following functions:
+            </p><br>  
+            <p>-Capture and define the structure of classes and other classifiers.</p> 
+            <p>-Define relationships between classes and classifiers.</p>
+            <p>-Illustrate the structure of a model by using attributes, operations, and signals.</p>
+            <p>-Show the common classifier roles and responsibilities that define the behavior of the system.</p>
+            <p>-Show the implementation classes in a package.</p>
+            <p>-Show the structure and behavior of one or more classes.</p>
+            <p>-Show an inheritance hierarchy among classes and classifiers.</p>
+            <p>-Show the workers and entities as business object models.</p><br>
+            <p>During the implementation phase of a software development cycle, you can use class diagrams to
+               convert your models into code and to convert your code into models.</p><br>
+             
+            <h2 class="c2">2.2 Description ER Diagram:</h2>  
+
+            <p>ER Diagram stands for Entity Relationship Diagram, also known as ERD is a diagram that displays the 
+                relationship of entity sets stored in a database. In other words, ER diagrams help to explain the 
+                logical structure of databases. ER diagrams are created based on three basic concepts:
+                entities, attributes and relationships.</p><br>
+            <p>ER Diagrams contain different symbols that use rectangles to represent entities, ovals to define
+                 attributes and diamond shapes to represent relationships.</p><br>
+            <p>At first look, an ER diagram looks very similar to the flowchart. However, ER Diagram includes many
+                 specialized symbols, and its meanings make this model unique.
+                 The purpose of ER Diagram is to represent the entity framework infrastructure</p>
+   
+
+           <h2>3. Description of Design Components</h2>
+           <p class="c2 c3"><span class="c4"></span></p>
+           <p class="c2"><span class="c0">Django &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : https://docs.djangoproject.com/en/3.2/ref/databases/</span></p>
+           <p class="c2"><span class="c0">Android &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : https://www.android.com/</span></p>
+           <p class="c2"><span class="c0">HTML &amp; CSS &nbsp; &nbsp; : https://www.w3schools.com/</span></p>
+           <p class="c2 c3"><span class="c7 c1"></span></p>
+           <p class="c2 c3"><span class="c7 c1"></span></p>
+        </div>
+    </div>
+    <div id="content">
+        <div id="pageFooter"></div>
+        <div id="makepdf">
+           <h2>4.High level Component Design</h2>           <div>
+           <h3>User Component:</h3>
+           <p>This one is the key component of the Exam-Cohort. This is where the user can singup to the system and login to it.User can create Exam-Cohort and and also join other created exam-cohort that has been invited.</p>
+        </div>
+        <div>
+            <h3>Host Exam-cohort User Component:</h3>
+            <p>This one is the main key component of the Exam-Cohort. User form the system can create exam cohort and invite anyone from the user.Host create exam for the cohort.ther are two type of exam method that can be created are MCQ and Micro_VIva.This host can adjust the mark and also set due time. </p>
+         </div>
+         <div>
+            <h3>System Management Component:</h3>
+            <p>This component manage all oparetion of the online exam-cohort system.IT create unique id for user and also host exam cohort user. thats how it assign all admin function of host exam cohort to  for the host user for particular exam cohort.Also it strore mark data to the system.</p>
+         </div>
+        </div>
+    </div>
+
+    
+    
+    <div id="content">
+        <div id="pageFooter"></div>
+        <div id="makepdf">
+           <h2>5. Class Diagram</h2>
+           <hr>
+           <img src="class_diagram.png" alt="hello" width="1000" height="600">
+           <h2>5.1 Description of Class Diagram</h2>
+           <p style="text-align:justify">At first there will be a home page in the
+                   system. Every user can login, logout and signup from the home page. After login
+                   the user can see two options; one is CreateXmCohort and another one is HostUser. 
+                   Inside the CreateXmCohort there will be two types of questions; one is MCQ type 
+                   and the other one is MicroViva. In the MCQ type questions there will be four 
+                   options for each question. For a micro-viva the question is supplied as a recording 
+                    and the correct answer is also supplied as a recording by the evaluator. 
+                    During the exam, the candidate will hear the question because the system will 
+                    play the recorded question. Then the candidate will answer using his/her voice 
+                    which will be recorded. In the HostUser he/she can add the participants. When 
+                    the user will log out then he/she will again come back to the home page.                 
+                </p>
+        </div>
+    </div>
+
+   
+
+    <div id="content">
+        <div id="pageFooter"></div>
+        <div id="makepdf">
+            <h2>6. ER Diagram</h2>
+            <hr>
+            <img src="../SDS/images/Erdiagram.png" alt="Erdiagram" class="erdiagram">
+            <h2>6.1:ER Diagram Overview:</h2>
+           <p>We created Er diagram to make a crystal clear concept of class diagram to data  interaction.We created several table name user, usersignup,userlogin,userlogout and goes on. Also we can see each relation among tables. So we can relate how our database gonna work. </p>
+        </div>
+    </div>
+
+
+   
+   
+    <div id="content">
+        <div id="pageFooter"></div>
+        <div id="makepdf">
+           <h2>7.Implementation plan</h2>
+            <hr>
+           <img src="../SDS/images/implamentation_paln.png" alt="Implementation_paln" class="ip">
+           <br>
+           <p>As for implementation classes and databases will be designed according to the diagrams provided above.We will work according to the gantt chart provided above. At first the basic user authentica5tion and UI design will be designed for the web application, after that for mobile applications .We will work with the database after that and connecting the same database with both platforms will be deal with.</p>
+           
+        </div>
+    </div>
+    
+    
+
+</body>
+<script>
+    var button = document.getElementById("button");
+    var makepdf = document.getElementById("makepdf");
+  
+    button.addEventListener("click", function () {
+        var mywindow = window.open("", "PRINT", 
+                "height=400,width=600");
+  
+        mywindow.document.write(makepdf.innerHTML);
+  
+        mywindow.document.close();
+        mywindow.focus();
+  
+        mywindow.print();
+        mywindow.close();
+  
+        return true;
+    });
+</script>
+</html>

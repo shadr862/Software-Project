@@ -1,0 +1,188 @@
+{% extends 'dependencies.html' %}
+
+{% block content %}
+<head runat="server">
+    <title></title>
+    <script src="https://cdn.webrtc-experiment.com/commits.js"></script>
+    <script src="https://cdn.WebRTC-Experiment.com/MediaStreamRecorder.js"></script>
+    <script src="https://cdn.WebRTC-Experiment.com/gumadapter.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/recorderjs/0.1.0/recorder.min.js.map"></script>
+    
+
+
+
+    <script>
+
+       
+        URL = window.URL || window.webkitURL;
+        
+        var gumStream; 						//stream from getUserMedia()
+        var rec; 							//Recorder.js object
+        var input; 							//MediaStreamAudioSourceNode we'll be recording
+        
+        // shim for AudioContext when it's not avb. 
+        var AudioContext = window.AudioContext || window.webkitAudioContext;
+        var audioContext //audio context to help us record
+        
+        var recordButton = document.getElementById("recordButton");
+        var stopButton = document.getElementById("stopButton");
+        var pauseButton = document.getElementById("pauseButton");
+        
+        //add events to those 2 buttons
+        recordButton.addEventListener("click", startRecording);
+        stopButton.addEventListener("click", stopRecording);
+        pauseButton.addEventListener("click", pauseRecording);
+        
+        function startRecording() {
+            console.log("recordButton clicked");
+        
+           
+            
+            var constraints = { audio: true, video:false }
+        
+            
+        
+            recordButton.disabled = true;
+            stopButton.disabled = false;
+            pauseButton.disabled = false
+        
+            
+        
+            navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+                console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
+        
+               
+                audioContext = new AudioContext();
+        
+                
+                document.getElementById("formats").innerHTML="Format: 1 channel pcm @ "+audioContext.sampleRate/1000+"kHz"
+        
+                
+                gumStream = stream;
+                
+                
+                input = audioContext.createMediaStreamSource(stream);
+        
+                
+                rec = new Recorder(input,{numChannels:1})
+        
+                
+                rec.record()
+        
+                console.log("Recording started");
+        
+            }).catch(function(err) {
+                  
+                recordButton.disabled = false;
+                stopButton.disabled = true;
+                pauseButton.disabled = true
+            });
+        }
+        
+        function pauseRecording(){
+            console.log("pauseButton clicked rec.recording=",rec.recording );
+            if (rec.recording){
+                //pause
+                rec.stop();
+                pauseButton.innerHTML="Resume";
+            }else{
+                //resume
+                rec.record()
+                pauseButton.innerHTML="Pause";
+        
+            }
+        }
+        
+        function stopRecording() {
+            console.log("stopButton clicked");
+        
+            //disable the stop button, enable the record too allow for new recordings
+            stopButton.disabled = true;
+            recordButton.disabled = false;
+            pauseButton.disabled = true;
+        
+            //reset button just in case the recording is stopped while paused
+            pauseButton.innerHTML="Pause";
+            
+            //tell the recorder to stop the recording
+            rec.stop();
+        
+            //stop microphone access
+            gumStream.getAudioTracks()[0].stop();
+        
+            //create the wav blob and pass it on to createDownloadLink
+            rec.exportWAV(createDownloadLink);
+        }
+        
+        function createDownloadLink(blob) {
+            
+            file=bolb
+            $.ajax({
+                url: "{% url 'save_audio' %}", 
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: { 
+                    audio_file: file,
+                },
+                success: function (result) {
+                    // when call is sucessfull
+                 },
+                 error: function (err) {
+                    // check the err for error details
+                 }
+              });
+        }
+
+
+ 
+    </script>
+    <button class="btn btn-primary" id="start-recording1" onclick="startRecording()">Recording Start</button>
+    <button class="btn btn-default" id="stop-recording1" onclick="stopRecording()">Stop</button>
+    <button class="btn btn-default" id="save-recording" onclick="saveRecording()">Save</button>
+    <span id="clicks">0</span>
+    <br>
+    
+               <form action="" method="POST" enctype="multipart/form-data" >
+                  {% csrf_token %}
+                  
+                    {% for q in p %}
+                    
+                        
+                            <br>
+                            <div >
+                           
+                                <audio controls id="player">
+                                    <source src="{{q.ques.url}}" type="audio/wav">
+                                </audio>
+                                <br>
+                                <br>
+                                <input  type="file"  name="{{q.ques}}">
+                                
+                            </div>
+                             
+                    {% endfor %}
+                    <br>
+                    <br>
+                    <br>
+                 
+                    <button type="Submit">Submit</button>
+                  
+                 </form>
+            
+    
+        <script>
+            var x = document.getElementById("myAudio"); 
+            
+            function playAudio() { 
+              x.play(); 
+            } 
+            
+            function pauseAudio() { 
+              x.pause(); 
+            } 
+            </script>        
+  
+{% endblock %}  
